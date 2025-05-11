@@ -17,3 +17,6 @@ Route::get('/booking_table', function () {
 Route::get('/booking_event', function () {
     return view('booking_event');
 });
+Route::get('/kitchen', function () {
+    return view('kitchen');
+});

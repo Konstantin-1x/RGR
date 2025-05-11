@@ -1,0 +1,35 @@
+@section('menu')
+<div class="div-wrapper_00 hidden" id="myMenu">
+    <div class="overlap-group-wrapper_501">
+        <div class="overlap-group_501">
+            <img class="vector_501" src="/storage/img/cancel.svg" onclick="closeMenu()"/>
+            <div class="view-501">
+                <div class="text-wrapper-501">О НАС</div>
+                <div class="div-501">МЕНЮ</div>
+                <div class="text-wrapper-2-501">ГЛАВНАЯ</div>
+                <div class="text-wrapper-3-501">КОНТАКТЫ</div>
+                <div class="text-wrapper-4-501">БРОНИРОВАТЬ</div>
+                <img class="line-501" src="/storage/img/line-5.svg" />
+            </div>
+            <div class="view-2-501">
+                <div class="text-wrapper-5-501">Контакты</div>
+                <div class="text-wrapper-6-501">en\ru</div>
+                <img class="img-501" src="/storage/img/line-6.png" />
+                <p class="element-info-501">+7 (978) 111 11 11<br />info@sirocco.ru</p>
+                <img class="path-501" src="/storage/img/vk.png" />
+                <img class="vector-3-501" src="/storage/img/tg.png" />
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("myMenu");
+        menu.classList.toggle("hidden");
+    }
+    function closeMenu(){
+        const menu = document.getElementById("myMenu");
+        menu.classList.add("hidden"); // просто скрываем меню
+    }
+</script>
+
