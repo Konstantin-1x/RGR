@@ -29,10 +29,19 @@
     function toggleMenu() {
         const menu = document.getElementById("myMenu");
         menu.classList.toggle("hidden");
+
+        if (!menu.classList.contains("hidden")) {
+            document.body.style.overflow = "hidden"; // Отключаем скроллинг
+        } else {
+            document.body.style.overflow = "auto"; // Включаем скроллинг обратно
+        }
     }
-    function closeMenu(){
+
+    function closeMenu() {
         const menu = document.getElementById("myMenu");
-        menu.classList.add("hidden"); // просто скрываем меню
+        menu.classList.add("hidden");
+        document.body.style.overflow = "auto"; // Включаем скроллинг обратно
     }
 </script>
+
 
