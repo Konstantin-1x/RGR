@@ -16,7 +16,7 @@
                                 <div class="group">
                                     <div class="view-3">
                                         <div class="text-wrapper">Выберите ваш город</div>
-                                        <img class="vector" src="img/vector.svg" />
+                                        <img class="vector" src="storage/img/down.svg" />
                                     </div>
                                     <div class="view-4"><div class="text-wrapper">Ваше Имя</div></div>
                                     <div class="view-5"><div class="text-wrapper">ХХ\ХХ\ХХ</div></div>
@@ -25,7 +25,7 @@
                                     <div class="view-8"><div class="text-wrapper">E-mail</div></div>
                                     <div class="view-9">
                                         <div class="text-wrapper">Время</div>
-                                        <p class="p">*1 бронь = 1.5 часа</p>
+                                        <div class="p">*1 бронь = 1.5 часа</div>
                                     </div>
                                 </div>
                             </div>

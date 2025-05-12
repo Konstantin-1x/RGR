@@ -1,7 +1,8 @@
 @extends('layouts.app')
-@section('title-block')О нас@endsection
+@section('title-block')Главная страница@endsection
 
 @section('content')
+
 <link rel="stylesheet" href="storage/css/style_index.css" />
 <div class="view-3">
     <div class="view-4">
@@ -17,8 +18,24 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const scrollTarget = urlParams.get("scroll");
+
+            if (scrollTarget) {
+                const element = document.getElementById(scrollTarget);
+                if (element) {
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: "smooth" });
+                    }); // небольшая задержка для надежности
+                }
+            }
+        });
+    </script>
+
     <div class="div-2">
-        <div class="text-wrapper-10">О НАС</div>
+        <div class="text-wrapper-10" id="text-wrapper-10">О НАС</div>
         <p class="text-wrapper-11">
             Сеть ресторанов на Крымском полуострове приглашает вас в атмосферу средиземноморского уюта и вкуса — один
             шаг, и вы уже на побережье Италии, Греции или Испании. В Севастополе и Симферополе вас ждут изысканные
@@ -47,8 +64,8 @@
             <img class="blueberry" src="storage/img/blueberry.svg" />
             <div class="element">
                 <div class="overlap-group-2">
-                    <img class="image" src="storage/img/image-2.png" />
-                    <img class="image-2" src="storage/img/image.svg" />
+                    <img class="image" src="storage/img/marks.svg"/>
+                    <img class="image-2" src="storage/img/marks.svg" />
                     <div class="p">
                         Настоящее погружение в атмосферу Средиземноморья! В Sirocco потрясающая кухня — свежайшие
                         морепродукты, ароматные специи и идеально приготовленные паста и рыба. Обслуживание внимательное, но
@@ -59,10 +76,10 @@
             <div class="text-wrapper-5">Оставьте свой отзыв</div>
             <div class="frame"><div class="text-wrapper-6">Попробуйте что-то написать...</div></div>
         </div>
-        <img class="vector" src="storage/img/vector.svg" />
+        <img class="vector" src="storage/img/right.svg" />
     </div>
-    <div class="text-wrapper-7">Отзывы посетителей</div>
-    <img class="vector-2" src="storage/img/vector-2.svg" />
+    <div class="text-wrapper-7" id="text-wrapper-7">Отзывы посетителей</div>
+    <img class="vector-2" src="storage/img/left.svg" />
 </div>
     {{--<div class="overlap-wrapper">
         <div class="frame-wrapper">

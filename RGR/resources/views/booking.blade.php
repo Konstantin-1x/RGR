@@ -9,20 +9,20 @@
         <img class="mint" src="/storage/img/mint.svg" />
         <img class="orange" src="/storage/img/orange.svg" />
         <div class="div-2">
-            <div class="overlap-group-wrapper">
+            <a href="{{route('booking_table')}}" class="overlap-group-wrapper">
                 <div class="overlap-group">
                     <div class="image"></div>
                     <div class="text-wrapper">Стол</div>
                     <img class="arrow" src="/storage/img/Arrow.svg" />
                 </div>
-            </div>
-            <div class="overlap-wrapper">
+            </a>
+            <a href="{{route('booking_event')}}" class="overlap-wrapper">
                 <div class="overlap-2">
                     <div class="image-2"></div>
                     <div class="text-wrapper-2">Мероприятие</div>
                     <img class="arrow" src="/storage/img/Arrow.svg" />
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

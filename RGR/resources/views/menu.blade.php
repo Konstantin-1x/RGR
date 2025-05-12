@@ -17,7 +17,6 @@
                 <div class="text-wrapper-2-501">ГЛАВНАЯ</div>
                 <div class="text-wrapper-3-501">КОНТАКТЫ</div>
                 <div class="text-wrapper-4-501">БРОНИРОВАТЬ</div>
-                <img class="line-501" src="/storage/img/line-5.svg" />
             </div>
             <div class="view-2-501">
                 <div class="text-wrapper-5-501">Контакты</div>

@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class kitchen extends Controller
 {
-    //
+    public function show(){
+        return view('kitchen');
+    }
 }

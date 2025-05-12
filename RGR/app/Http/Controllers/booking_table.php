@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class booking_table extends Controller
 {
-    //
+    public function show(){
+        return view('booking_table');
+    }
 }
