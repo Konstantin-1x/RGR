@@ -3,6 +3,53 @@
 
 @section('content')
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const infoElement = document.querySelector(".element-https-xn");
+        const menuItems = document.querySelectorAll(".view-7 div");
+
+        const infoData = {
+            "Обслуживание": {!! json_encode($info['Обслуживание'] ?? "Нет данных") !!},
+            "Персонал": {!! json_encode($info['Персонал'] ?? "Нет данных") !!},
+            "Награды": {!! json_encode($info['Награды'] ?? "Нет данных") !!},
+            "Контакты": {!! json_encode($info['Контакты'] ?? "Нет данных") !!}
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const scrollTarget = urlParams.get("scroll");
+
+        if (scrollTarget==="contact") {
+            const element = document.getElementById(".text-wrapper-15");
+            infoElement.innerHTML = infoData["Контакты"];
+            document.querySelector(".text-wrapper-15").classList.add("active");
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" });
+                });
+            }
+        }
+        else {
+            // Устанавливаем "Обслуживание" при загрузке
+            infoElement.innerHTML = infoData["Обслуживание"];
+            document.querySelector(".text-wrapper-12").classList.add("active");
+        }
+        menuItems.forEach(item => {
+            item.addEventListener("click", function () {
+                const category = item.innerText.trim();
+                if (infoData[category]) {
+                    infoElement.innerHTML = infoData[category];
+                }
+
+                // Снимаем активный класс у всех
+                menuItems.forEach(menuItem => menuItem.classList.remove("active"));
+
+                // Добавляем активный класс к нажатому элементу
+                item.classList.add("active");
+            });
+        });
+    });
+</script>
+
 <link rel="stylesheet" href="storage/css/style_index.css" />
 <div class="view-3">
     <div class="view-4">
@@ -28,7 +75,7 @@
                 if (element) {
                     setTimeout(() => {
                         element.scrollIntoView({ behavior: "smooth" });
-                    }); // небольшая задержка для надежности
+                    });
                 }
             }
         });
@@ -45,15 +92,10 @@
             <div class="text-wrapper-12">Обслуживание</div>
             <div class="text-wrapper-13">Персонал</div>
             <div class="text-wrapper-14">Награды</div>
-            <div class="text-wrapper-15">Контакты</div>
+            <div class="text-wrapper-15" id=".text-wrapper-15">Контакты</div>
         </div>
         <p class="element-https-xn">
-      <span class="span"
-      >В каждом ресторане разделен на 3 зоны: <br />главный зал (100 человек);<br />банкетный (до 40
-        человек);<br />летняя веранда (24 человека).<br /><br />Также доступна доставка через сервис Крым.Еда:
-        <br
-        /></span>
-            <span class="text-wrapper-16">https://xn----8sbldxm1a2g.xn--p1ai/sevastopol/restaurants/sirocco/</span>
+            {!! $info['Контакты'] ?? "Нет данных" !!}
         </p>
         <img class="rosemary" src="storage/img/rosemary.svg" />
     </div>
@@ -74,7 +116,16 @@
                 </div>
             </div>
             <div class="text-wrapper-5">Оставьте свой отзыв</div>
-            <div class="frame"><div class="text-wrapper-6">Попробуйте что-то написать...</div></div>
+            <form action="index_form" method="post">
+                @csrf
+                <textarea
+                    class="frame"
+                    name="message"
+                    placeholder="Попробуйте что-то написать..."
+                    onkeydown="if(event.key === 'Enter' && !event.shiftKey) event.preventDefault();"
+                ></textarea>
+                <button type="submit" class="sentMessage">Отправить</button>
+            </form>
         </div>
         <img class="vector" src="storage/img/right.svg" />
     </div>

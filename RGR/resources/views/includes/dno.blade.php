@@ -13,7 +13,7 @@
             <a href="{{route('booking_event')}}" class="text-wrapper-8-dno">Заказать банкет</a>
         </div>
         <div class="group-4-dno">
-            <div class="text-wrapper-5-dno">Контакты</div>
+            <a href="{{ route('welcome', ['scroll' => 'contact']) }} " class="text-wrapper-5-dno">Контакты</a>
             <div class="text-wrapper-7-dno">+7 (978) 111 11 11</div>
             <a href="https://t.me/mqweco" target="_blank">
                 <img class="text-wrapper-8-dno" src="storage/img/tg.png" />
