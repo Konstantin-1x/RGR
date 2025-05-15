@@ -5,14 +5,20 @@
             <img class="vector_501" src="/storage/img/cancel.svg" onclick="closeMenu()"/>
             <div class="view-501">
                 <a href="{{ route('welcome', ['scroll' => 'text-wrapper-10']) }} " class="text-wrapper-501">О НАС</a>
-                <a href="{{route('kitchen')}}" class="div-501">МЕНЮ</a>
-                <a href="{{route('welcome')}}" class="text-wrapper-2-501">ГЛАВНАЯ</a>
-                <a href="{{route('booking')}}" class="text-wrapper-3-501">БРОНИРОВАТЬ</a>
+                <a href="{{route('kitchen')}}" class="div-501">MENU</a>
+                <a href="{{route('welcome')}}" class="text-wrapper-2-501">MAIN</a>
+                <a href="{{route('booking')}}" class="text-wrapper-3-501">BOOK</a>
                 <img class="line-501" src="/storage/img/line-5.svg" />
             </div>
             <div class="view-2-501">
-                <div class="text-wrapper-5-501">Контакты</div>
-                <div class="text-wrapper-6-501">en\ru</div>
+                <div class="text-wrapper-5-501">Contacts</div>
+
+                <form action="{{ route('exchange.language') }}" method="POST">
+                    @csrf
+                    <button>
+                        <div class="text-wrapper-6-501">en\ru</div>
+                    </button>
+                </form>
                 <img class="img-501" src="/storage/img/Line 6.png" />
                 <p class="element-info-501">+7 (978) 111 11 11<br />info@sirocco.ru</p>
                 <a href="https://t.me/mqweco" target="_blank">

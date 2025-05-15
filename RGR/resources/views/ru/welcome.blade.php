@@ -47,6 +47,77 @@
                 item.classList.add("active");
             });
         });
+
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+                dots[i].classList.toggle("active", i === index);
+            });
+            slideIndex = index;
+        }
+
+        window.currentSlide = function(index) {
+            showSlide(index);
+        };
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        setInterval(nextSlide, 3000); // Автопрокрутка каждые 3 секунды
+
+
+    });
+    function showMap(mapIdToShow) {
+        const maps = document.querySelectorAll(".map");
+        maps.forEach(map => {
+            map.style.display = (map.id === mapIdToShow) ? "block" : "none";
+        });
+    }
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const scrollTarget = urlParams.get("scroll");
+
+        if (scrollTarget) {
+            const element = document.getElementById(scrollTarget);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" });
+                });
+            }
+        }
+
+        const reviews = @json($reviews);
+        let reviewIndex = 0;
+
+        const reviewElement = document.getElementById("reviews");
+        const leftBtn = document.getElementById("left");
+        const rightBtn = document.getElementById("right");
+
+        function updateReview(index) {
+            reviewElement.textContent = reviews[index];
+        }
+
+        leftBtn.addEventListener("click", () => {
+            reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
+            updateReview(reviewIndex);
+        });
+
+        rightBtn.addEventListener("click", () => {
+            reviewIndex = (reviewIndex + 1) % reviews.length;
+            updateReview(reviewIndex);
+        });
+
+        // Начальное отображение
+        updateReview(reviewIndex);
     });
 </script>
 
@@ -57,30 +128,27 @@
             <p class="SIROCCO">SIROCCO - дух Средиземноморья<br />на побережье Крыма</p>
             <div class="overlap-group-3">
                 <img class="leaf" src="storage/img/leaf.svg" />
-                <div class="view-6">
-                    <img class="element-2" src="storage/img/1.png" />
-                    <img class="element-3" src="storage/img/2.png" />
-                    <img class="element-4" src="storage/img/3.png" />
+{{--                <div class="view-6">--}}
+{{--                    <img class="element-2" src="storage/img/1.png" />--}}
+{{--                    <img class="element-3" src="storage/img/2.png" />--}}
+{{--                    <img class="element-4" src="storage/img/3.png" />--}}
+{{--                </div>--}}
+
+                <div class="slider">
+                    <div class="slides">
+                        <img src="storage/img/1.png" class="slide active">
+                        <img src="storage/img/2.png" class="slide">
+                        <img src="storage/img/3.png" class="slide">
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" onclick="currentSlide(0)"></span>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const scrollTarget = urlParams.get("scroll");
-
-            if (scrollTarget) {
-                const element = document.getElementById(scrollTarget);
-                if (element) {
-                    setTimeout(() => {
-                        element.scrollIntoView({ behavior: "smooth" });
-                    });
-                }
-            }
-        });
-    </script>
-
     <div class="div-2">
         <div class="text-wrapper-10" id="text-wrapper-10">О НАС</div>
         <p class="text-wrapper-11">
@@ -108,7 +176,7 @@
                 <div class="overlap-group-2">
                     <img class="image" src="storage/img/marks.svg"/>
                     <img class="image-2" src="storage/img/marks.svg" />
-                    <div class="p">
+                    <div class="p" id="reviews">
                         Настоящее погружение в атмосферу Средиземноморья! В Sirocco потрясающая кухня — свежайшие
                         морепродукты, ароматные специи и идеально приготовленные паста и рыба. Обслуживание внимательное, но
                         ненавязчивое. Вернусь сюда ещё не раз!
@@ -127,24 +195,35 @@
                 <button type="submit" class="sentMessage">Отправить</button>
             </form>
         </div>
-        <img class="vector" src="storage/img/right.svg" />
+        <button id="right">
+            <img class="vector" src="storage/img/right.svg" />
+        </button>
+
     </div>
     <div class="text-wrapper-7" id="text-wrapper-7">Отзывы посетителей</div>
-    <img class="vector-2" src="storage/img/left.svg" />
+    <button id="left">
+        <img class="vector-2" src="storage/img/left.svg" />
+    </button>
+
+    <div class="map" id="map1" >
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A6f5c474e32c7263bb8bd5f272c05835d9611e22f70c926f304d59c1ee7e8b132&amp;source=constructor" width="1440" height="726" frameborder="0"></iframe>
+    </div>
+    <div class="map" id="map2" style="display: none;">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A6ea3a99b1aa7dd3578590f1b4d7db79c211dc01983d30e695b7858ce6e993767&amp;source=constructor" width="1440" height="726" frameborder="0"></iframe>
+    </div>
+    <div class="frame11">
+        <div class="text-wrapper">Наши адреса</div>
+
+        <button class="group21" onclick="showMap('map1')">
+            <div class="text-wrapper-88">Севастополь</div>
+            <div class="text-wrapper-2">Большая Морская, 14</div>
+        </button>
+
+        <button class="group-22" onclick="showMap('map2')">
+            <div class="text-wrapper-88">Симферополь</div>
+            <div class="text-wrapper-2">Севастопольская, 21</div>
+        </button>
+    </div>
 </div>
-    {{--<div class="overlap-wrapper">
-        <div class="frame-wrapper">
-            <div class="frame-3">
-                <div class="text-wrapper-17">Наши адреса</div>
-                <div class="group-5">
-                    <div class="text-wrapper-18">Севастополь</div>
-                    <div class="text-wrapper-19">Большая Морская, 14</div>
-                </div>
-                <div class="group-6">
-                    <div class="text-wrapper-18">Симферополь</div>
-                    <div class="text-wrapper-19">Севастопольская, 21</div>
-                </div>
-            </div>
-        </div>
-    </div>--}}
+
 @endsection

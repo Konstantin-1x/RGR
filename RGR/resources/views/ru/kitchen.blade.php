@@ -11,8 +11,13 @@
     <div class="view">
         <div class="text-wrapper">Закуски</div>
         <div class="group">
-            <img class="image" src="storage/img/Томаты.png" />
-            <div class="div">
+            <div class="slider1">
+                <div class="slides1">
+                    <img src="storage/img/Томаты.png" class="slide1 active">
+                    <img src="storage/img/Креветки.png" class="slide1">
+                </div>
+            </div>
+            <div class="view-1">
                 <div class="text-wrapper-2">Окра и томаты<br />на грилле</div>
                 <img class="line" src="storage/img/line_7.png" />
                 <div class="text-wrapper-3">400 ₽</div>
@@ -31,7 +36,12 @@
     </div>
     <div class="view-4">
         <div class="text-wrapper-5">Основные блюда</div>
-        <img class="image-2" src="storage/img/стейк.png" />
+        <div class="slider2">
+            <div class="slides2">
+                <img src="storage/img/стейк.png" class="slide2 active">
+                <img src="storage/img/треска.png" class="slide2">
+            </div>
+        </div>
         <div class="view-5">
             <div class="text-wrapper-2">Филе глубоководной<br />трески</div>
             <img class="line" src="storage/img/line_7.png" />
@@ -70,4 +80,40 @@
         </div>
     </div>
 </div>
+<script>
+    let slideIndex1 = 0;
+    const slides1 = document.querySelectorAll(".slide1");
+
+    function showSlide1(index) {
+        slides1.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+        });
+        slideIndex1 = index;
+    }
+
+    function nextSlide1() {
+        slideIndex1 = (slideIndex1 + 1) % slides1.length;
+        showSlide1(slideIndex1);
+    }
+
+    setInterval(nextSlide1, 3000); // каждые 3 секунды
+
+
+    let slideIndex2 = 0;
+    const slides2 = document.querySelectorAll(".slide2");
+
+    function showSlide2(index) {
+        slides2.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+        });
+        slideIndex2 = index;
+    }
+
+    function nextSlide2() {
+        slideIndex2 = (slideIndex2 + 1) % slides2.length;
+        showSlide2(slideIndex2);
+    }
+
+    setInterval(nextSlide2, 2500); // каждые 3 секунды
+</script>
 @endsection
